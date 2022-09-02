@@ -7,4 +7,7 @@ COPY . .
 
 WORKDIR /usr/src/app
 
-CMD [ "python", "-m" , "flask", "run", "--host=0.0.0.0"]
+# CMD [ "python", "-m" , "flask", "run", "--host=0.0.0.0"]
+
+ENTRYPOINT ["python"]
+CMD ["app.py"]
