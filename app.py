@@ -2,14 +2,16 @@ from flask import Flask
 
 app = Flask(__name__)
 
+ranks = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
 suits = ['D', 'S', 'C', 'H']
 
-symbols = ['A', 'K', 'Q', 'J', '2', '3', '4', '5', '6', '7', '8', '9', '10']
-
 @app.route("/deck")
-@app.route("/deck/new")
-def deck():
-    return "deck of cards"
+def deck(ranks, suits):
+    cards = []
+    for rank in ranks:
+        for suit in suits:
+            cards.append(f'{rank}{suit}')
+    return cards
 
 @app.route("/shuffle")
 def shuffle():
@@ -20,4 +22,4 @@ def draw():
     return "draw card"
 
 if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0")
+    app.run(debug=True)
